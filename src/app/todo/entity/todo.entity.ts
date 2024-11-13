@@ -24,7 +24,7 @@ export class TodoEntity {
     
     @CreateDateColumn({ name: 'created_at' })
     @ApiProperty()
-    createAt: string;
+    createdAt: string;
     
     @UpdateDateColumn({ name: 'updated_at' })
     @ApiProperty()
@@ -33,4 +33,13 @@ export class TodoEntity {
     @DeleteDateColumn({ name: 'deleted_at' })
     @ApiProperty()
     deleteAt: string;
+
+    constructor(todo?: Partial<TodoEntity>) {
+        this.id = todo?.id;
+        this.task = todo?.task;
+        this.isDone = todo?.isDone;
+        this.createdAt = todo?.createdAt;
+        this.updatedAt = todo?.updatedAt;
+        this.deleteAt = todo?.deleteAt;
+    }
 }
